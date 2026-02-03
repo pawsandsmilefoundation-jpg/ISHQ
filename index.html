@@ -1,27 +1,119 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Login</title>
+<meta charset="UTF-8">
+<title>Only For Dimple ❤️</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="style.css">
+
+<!-- LOGIN CSS -->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Nunito',sans-serif;}
+body{overflow-x:hidden}
+
+/* LOGIN */
+#loginPage{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+}
+.video{
+  position:fixed;inset:0;width:100%;height:100%;object-fit:cover;opacity:.3
+}
+.background{
+  width:100%;height:100%;
+  background:url("1.jpg") center/cover no-repeat;
+}
+.login{
+  width:100%;height:100%;
+  display:flex;justify-content:center;align-items:center;
+}
+.login-form{
+  width:350px;
+  padding:30px;
+  text-align:center;
+  backdrop-filter:blur(10px);
+  border:1px solid #fff;
+  box-shadow:0 0 15px #f1a6bc;
+}
+.login-form h1{color:white;margin-bottom:25px}
+.login-form input{
+  width:100%;padding:10px;
+  background:none;border:2px solid white;
+  color:white;border-radius:8px;
+}
+.login-form input::placeholder{color:white}
+.login-form button{
+  margin-top:20px;
+  padding:10px 40px;
+  background:#da2859;
+  color:white;border:none;border-radius:5px;
+  cursor:pointer;
+}
+
+/* LOVE WEBSITE */
+body{
+  margin:0;
+  color:white;
+  background:url('img1.jpeg') repeat;
+  background-size:cover;
+  animation:bgMove 80s linear infinite;
+}
+@keyframes bgMove{from{background-position:0 0}to{background-position:-3000px 0}}
+
+.container{padding:6vw;text-align:center;display:none}
+.card{
+  background:rgba(0,0,0,.45);
+  backdrop-filter:blur(8px);
+  border-radius:6vw;
+  padding:6vw;
+  margin:10vw auto;
+  max-width:92%;
+}
+.gallery{position:relative;height:60vw;max-height:320px;overflow:hidden}
+.gallery img{position:absolute;width:100%;height:100%;object-fit:cover;opacity:0;transition:1s}
+</style>
 </head>
+
 <body>
 
-<div class="background">
+<!-- LOGIN PAGE -->
+<div id="loginPage">
   <video autoplay muted loop class="video">
     <source src="2.mp4" type="video/mp4">
   </video>
 
-  <div class="login">
-    <div class="login-form">
-      <h1>LOGIN ❤️</h1>
+  <div class="background">
+    <div class="login">
+      <div class="login-form">
+        <h1>LOGIN ❤️</h1>
+        <form onsubmit="login(event)">
+          <input id="user" placeholder="Username"><br><br>
+          <input id="pass" type="password" placeholder="Password"><br><br>
+          <button>Login</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 
-      <form onsubmit="login(event)">
-        <input type="text" id="user" placeholder="UserName"><br><br>
-        <input type="password" id="pass" placeholder="Password"><br><br><br>
-        <button>Login</button>
-      </form>
+<!-- LOVE WEBSITE -->
+<div class="container" id="loveSite">
+  <h1>Hey ❤️</h1>
+  <p>Ye website normal nahi… ye meri feelings hai 🌙</p>
 
+  <div class="card">
+    <h2>Happy Anniversary ❤️</h2>
+    <p>Forever yours,<br>Tanush ❤️</p>
+  </div>
+
+  <div class="card">
+    <h2>📸 Our Moments</h2>
+    <div class="gallery">
+      <img src="img1.jpeg">
+      <img src="img2.jpeg">
+      <img src="img3.jpeg">
+      <img src="img4.jpeg">
     </div>
   </div>
 </div>
@@ -29,14 +121,22 @@
 <script>
 function login(e){
   e.preventDefault();
-  if(
-    document.getElementById("user").value === "dimple" &&
-    document.getElementById("pass").value === "love"
-  ){
-    window.location.href = "../love/index.html";
-  } else {
-    alert("Wrong Login ❌");
-  }
+  if(user.value==="dimple" && pass.value==="love"){
+    document.getElementById("loginPage").style.display="none";
+    document.getElementById("loveSite").style.display="block";
+    startSlideshow();
+  }else alert("Wrong Login ❌");
+}
+
+let slide=0;
+function startSlideshow(){
+  let imgs=document.querySelectorAll(".gallery img");
+  imgs[0].style.opacity=1;
+  setInterval(()=>{
+    imgs.forEach(i=>i.style.opacity=0);
+    slide=(slide+1)%imgs.length;
+    imgs[slide].style.opacity=1;
+  },3000);
 }
 </script>
 
