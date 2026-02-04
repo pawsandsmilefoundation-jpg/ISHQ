@@ -508,9 +508,8 @@ toh yaad rakhna — main abhi bhi wahi hoon jb hum mile the aur mene pucha tha r
   </div>
 </div>
 <!-- 🌸 Flower Button -->
-<div class="flower-btn" onclick="openFlowerScreen()">
-  🌸
-</div>
+<div class="heart-flower-btn" onclick="openFlowerScreen()">💖</div>
+
 
 <script>
 let music=document.getElementById("bgm");
@@ -735,9 +734,16 @@ oldEntriesEl.ontouchend = (e)=>{
   if(endX < startX - 50){ if(currentIndex<diaryEntriesArr.length-1){ currentIndex++; updateActiveEntry(); } }
   else if(endX > startX + 50){ if(currentIndex>0){ currentIndex--; updateActiveEntry(); } }
 };
+
+function openFlowerScreen(){
+  window.location.href = "./flower.html";
+}
+
+
 </script>
 
 </body>
 
 </html>
+
 
