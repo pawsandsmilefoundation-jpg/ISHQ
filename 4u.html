@@ -354,31 +354,6 @@ button{
   border-radius:15px;
   box-shadow:0 15px 30px rgba(0,0,0,0.6);
 }  
-.flower-btn{
-  position:fixed;
-  bottom:20px;
-  right:20px;
-  width:55px;
-  height:55px;
-  background:#ffb6c1;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:28px;
-  cursor:pointer;
-  box-shadow:0 0 15px rgba(255,182,193,0.8);
-  animation:pulse 2s infinite;
-  z-index:9999;
-}
-
-@keyframes pulse{
-  0%{transform:scale(1)}
-  50%{transform:scale(1.1)}
-  100%{transform:scale(1)}
-}
-
-  
 </style>
 </head>
 
@@ -509,7 +484,6 @@ toh yaad rakhna — main abhi bhi wahi hoon jb hum mile the aur mene pucha tha r
 </div>
 <!-- 🌸 Flower Button -->
 <div class="heart-flower-btn" onclick="openFlowerScreen()">🌸</div>
-
 
 <script>
 let music=document.getElementById("bgm");
@@ -734,17 +708,11 @@ oldEntriesEl.ontouchend = (e)=>{
   if(endX < startX - 50){ if(currentIndex<diaryEntriesArr.length-1){ currentIndex++; updateActiveEntry(); } }
   else if(endX > startX + 50){ if(currentIndex>0){ currentIndex--; updateActiveEntry(); } }
 };
-
 function openFlowerScreen(){
   window.location.href = "./flower.html";
 }
-
-
 </script>
 
 </body>
 
 </html>
-
-
-
