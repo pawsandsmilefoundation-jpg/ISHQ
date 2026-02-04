@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Only For Dimple ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+/* 💥 CONFETTI */
+.confetti{
+  position:fixed;
+  top:-10vh;
+  font-size:5vw;
+  animation:fall 4s linear infinite;
+}
+@keyframes fall{
+  to{transform:translateY(120vh) rotate(360deg);}
+}
+
+body{
+  margin:0;
+  font-family:'Segoe UI',sans-serif;
+  color:white;
+  background:url('img1.jpeg') repeat;
+  background-size:cover;
+  animation:bgMove 80s linear infinite;
+  overflow-x:hidden;
+}
+@keyframes bgMove{
+  from{background-position:0 0;}
+  to{background-position:-3000px 0;}
+}
+
+.container{
+  padding:6vw;
+  text-align:center;
+}
+
+/* CARD */
+.card{
+  background:rgba(0,0,0,0.45);
+  backdrop-filter:blur(8px);
+  border-radius:6vw;
+  padding:6vw;
+  margin:10vw auto;
+  max-width:92%;
+  box-shadow:0 0 30px rgba(0,0,0,0.6);
+}
+
+/* GALLERY */
+.gallery{
+  position:relative;
+  width:100%;
+  height:60vw;
+  max-height:320px;
+  overflow:hidden;
+  border-radius:5vw;
+  margin-top:4vw;
+}
+.gallery img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  position:absolute;
+  top:0; left:0;
+  opacity:0;
+  transition:opacity 1.2s ease-in-out;
+}
+
+/* COUNTER */
+.counter{
+  margin-top:4vw;
+  font-size:4.5vw;
+}
+.counter span{
+  display:block;
+  font-size:6.5vw;
+  font-weight:bold;
+  color:#ffb3c1;
+}
+
+/* INPUT + BUTTON */
+input{
+  padding:3vw;
+  border-radius:10vw;
+  border:none;
+  width:65%;
+  text-align:center;
+  font-size:4vw;
+}
+button{
+  padding:3vw 6vw;
+  border:none;
+  border-radius:10vw;
+  font-size:4vw;
+  cursor:pointer;
+  background:white;
+  color:#ff4d6d;
+  margin-top:3vw;
+}
+
+/* MUSIC BUTTON */
+#musicBtn{
+  position:fixed;
+  top:4vw;
+  right:4vw;
+  padding:2.5vw 4vw;
+  border-radius:10vw;
+  border:none;
+  z-index:100;
+}
+
+/* PAW */
+.paw{
+  font-size:10vw;
+  cursor:pointer;
+}
+
+/* HIDDEN MESSAGE */
+#secret{
+  display:none;
+  animation:fadeIn 1s ease;
+}
+@keyframes fadeIn{
+  from{opacity:0; transform:scale(0.8);}
+  to{opacity:1; transform:scale(1);}
+}
+
+/* FLOATING HEARTS */
+.heart{
+  position:fixed;
+  bottom:-10vh;
+  font-size:6vw;
+  animation:floatUp linear infinite;
+  opacity:0.7;
+}
+@keyframes floatUp{
+  to{transform:translateY(-120vh);}
+}
+
+/* SHOOTING STARS */
+.star{
+  position:unfixed;
+  width:2px;
+  height:80px;
+  background:linear-gradient(white,transparent);
+  animation:shoot 2s linear infinite;
+  opacity:0.8;
+}
+@keyframes shoot{
+  from{transform:translate(0,0);}
+  to{transform:translate(-400px,400px); opacity:0;}
+}
+
+/* 🎂 BIRTHDAY POPUP */
+#birthdayPopup{
+  position:fixed;
+  bottom:4vw;
+  left:4vw;
+  background:rgba(0,0,0,0.6);
+  backdrop-filter:blur(8px);
+  border-radius:4vw;
+  padding:3vw;
+  width:180px;
+  box-shadow:0 0 15px rgba(255,105,135,0.6);
+  z-index:200;
+  animation:popIn 1s ease;
+  text-align:center;
+}
+
+#birthdayPopup h3{
+  margin:0;
+  font-size:16px;
+  color:#ffb3c1;
+}
+#birthdayPopup p{
+  margin:2px 0 0;
+  font-size:14px;
+}
+#bdayTimer{
+  margin-top:4px;
+  font-size:14px;
+  font-weight:bold;
+  color:#fff;
+}
+
+/* 💖 LOVE DAY POPUP */
+#lovePopup{
+  position:fixed;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  background:rgba(0,0,0,0.75);
+  backdrop-filter:blur(12px);
+  border-radius:6vw;
+  padding:6vw;
+  width:85vw;
+  max-width:320px;
+  text-align:center;
+  z-index:999;
+  box-shadow:0 0 30px rgba(255,105,135,0.7);
+  animation:fadeIn 1s ease;
+}
+#lovePopup h2{
+  margin:0;
+  color:#ffb3c1;
+}
+#lovePopup button{
+  margin-top:4vw;
+}
+
+/* 🐼 PANDA */
+#panda{
+  position:fixed;
+  bottom:-200px;
+  left:50%;
+  transform:translateX(-50%);
+  font-size:40vw;
+  animation:pandaUp 3s ease forwards;
+  z-index:998;
+}
+@keyframes pandaUp{
+  to{bottom:-5vw;}
+}
+
+/* 📔 DIARY ICON */
+#diaryIcon{
+  position:fixed;
+  left:10px;
+  top:50%;
+  transform:translateY(-50%);
+  font-size:50px;
+  cursor:pointer;
+  z-index:999;
+}
+
+/* 📔 DIARY FULL PAGE */
+#diaryPage{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.8);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  transform-origin:left;
+  transform:rotateY(90deg);
+  transition:transform 0.8s ease;
+  z-index:9999;
+}
+
+#diaryPage.pageOpen{
+  transform:rotateY(0deg);
+}
+
+.diaryBox{
+  background:white;
+  color:black;
+  width:90%;
+  max-width:420px;
+  border-radius:20px;
+  padding:15px;
+}
+
+.diaryBox textarea{
+  width:100%;
+  height:120px;
+  padding:10px;
+  border-radius:10px;
+  font-size:15px;
+}
+
+.diaryEntry{
+  background:#fff;
+  color:#000;
+  padding:4vw;
+  border-radius:3vw;
+  margin-bottom:4vw;
+  box-shadow:0 10px 25px rgba(0,0,0,.4);
+  animation:pageFlip .6s ease;
+  display:none;
+}
+.diaryEntry.active{
+  display:block;
+}
+@keyframes pageFlip{
+  from{transform:rotateY(-90deg);opacity:0;}
+  to{transform:rotateY(0);opacity:1;}
+}
+
+#oldEntries{
+  max-height:200px;
+  overflow-y:auto;
+}
+
+/* LIST BUTTON */
+#listBtn{
+  margin-top:5px;
+  padding:5px 10px;
+  background:#ffb3c1;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+}
+#dateList div:hover{
+  background:#ffe4f0;
+}
+</style>
+</head>
+
+<body>
+
+<audio id="bgm" loop>
+  <source src="song.mp3" type="audio/mpeg">
+</audio>
+<button id="musicBtn" onclick="toggleMusic()">Play / Pause</button>
+<div id="diaryIcon" onclick="openDiary()">📔</div>
+
+<div class="container">
+<h1>Hey ❤️</h1>
+<p>Ye website normal nahi… ye meri feelings hai 🌙</p>
+
+<p><b>Question:</b> Hum pehli baar kab mile the?</p>
+<input id="answer" type="password" placeholder="Enter password 💖">
+<button onclick="unlock()">Enter 💖</button>
+
+<div id="content" style="display:none">
+
+<!-- ANNIVERSARY -->
+<div class="card">
+<h2>Happy Anniversary bacha ❤️</h2>
+<div class="paw" onclick="openSecret()">🐾</div>
+<p>
+<b>1 December 2024</b> — jab sab kuch special bana ✨<br><br>
+<b>19 January 2025 · 1:30 AM</b> — jab main aur tum hum hogye 💫
+</p>
+</div>
+
+<!-- COUNTER -->
+<div class="card">
+<h2>⏳ Time Since We Fell in Love ⏳</h2>
+<div class="counter">
+<span id="days">0</span> Days
+<span id="hours">0</span> Hours
+<span id="minutes">0</span> Minutes
+<span id="seconds">0</span> Seconds
+</div>
+</div>
+
+<!-- MOMENTS -->
+<div class="card">
+<h2>📸 Our Moments 📸</h2>
+<div class="gallery">
+<img src="img1.jpeg">
+<img src="img2.jpeg">
+<img src="img3.jpeg">
+<img src="img4.jpeg">
+</div>
+</div>
+
+<!-- PROMISE -->
+<div class="card">
+<h2>💍 My Promise 💍</h2>
+<p>Main kabhi door nahi jaunga.<br>Har pal tumhare saath. Main promise karta hoon ki hamesha tumhare saath rahunga, tumhe har mushkil mein support dunga, tumhari har baat dhyan se sununga, aur tumhe poore dil se aur sachche pyar se chahunga. Jo bhi ho, main hamesha tumhare liye wahan rahunga, kyunki tum meri duniya ho ❤️</p>
+</div>
+
+<!-- FUTURE -->
+<div class="card">
+<h2>💌 Future Message 💌</h2>
+<p>
+Agar future me tum ye padh rahi ho,<br>
+toh yaad rakhna — main abhi bhi wahi hoon jb hum mile the aur mene pucha tha r u editor? me na badla hu aur na badlunga tumhare lliye mera pyaar humesa tumhara hai 💖
+</p>
+</div>
+
+<!-- HIDDEN -->
+<div class="card" id="secret">
+<h2>🐾 Hidden Message 🐾</h2>
+<p>Tum meri zindagi ka sabse khoobsurat hissa ho  jise me kabhi dur nhi jana jata ❤️</p>
+</div>
+
+<h2>Forever Yours,<br>Tanush ❤️</h2>
+</div>
+</div>
+
+<!-- 🎂 BIRTHDAY POPUP -->
+<div id="birthdayPopup">
+  <h3>🎂 Birthday Countdown</h3>
+  <p>5 May 💖</p>
+  <div id="bdayTimer">Loading...</div>
+</div>
+
+<!-- 💖 LOVE DAY POPUP -->
+<div id="lovePopup" style="display:none">
+  <h2 id="loveTitle"></h2>
+  <p id="loveMsg"></p>
+  <button onclick="closeLove()">Close ❤️</button>
+</div>
+
+<div id="panda" style="display:none">🐼</div>
+
+<!-- 📔 DIARY PAGE -->
+<div id="diaryPage">
+  <div class="diaryBox">
+    <h3>📔 Personal Diary</h3>
+    <p id="todayDate"></p>
+    <button id="listBtn">📖 List</button>
+    <div id="dateList" style="display:none; max-height:150px; overflow-y:auto; border:1px solid #ffb3c1; margin:5px 0; border-radius:10px; background:#fff0f8; padding:5px;"></div>
+    <textarea id="diaryText" placeholder="Aaj jo dil me hai likho..."></textarea>
+    <input type="file" id="diaryPhoto" accept="image/*">
+    <button onclick="saveDiary()">Save</button>
+    <button onclick="closeDiary()">Close</button>
+    <hr>
+    <div id="oldEntries"></div>
+  </div>
+</div>
+
+<script>
+let music=document.getElementById("bgm");
+function toggleMusic(){music.paused?music.play():music.pause();}
+
+// Unlock
+function unlock(){
+ let a=document.getElementById("answer").value.toLowerCase().trim();
+ if(a==="01/12/2024"||a==="1 december 24"){
+   document.getElementById("content").style.display="block";
+   music.play();
+   startSlideshow();
+   startCounter();
+   hearts();
+   stars();
+ }else alert("Sirf Dimple jaanti hai 😉");
+}
+
+// Slideshow
+let slide=0;
+function startSlideshow(){
+ let imgs=document.querySelectorAll(".gallery img");
+ imgs[0].style.opacity=1;
+ setInterval(()=>{ imgs.forEach(i=>i.style.opacity=0); slide=(slide+1)%imgs.length; imgs[slide].style.opacity=1; },3000);
+}
+
+// Hidden message
+function openSecret(){ document.getElementById("secret").style.display="block"; }
+
+// Counter
+function startCounter(){
+ const start=new Date("2025-01-19T01:30:00");
+ setInterval(()=>{
+  let diff=Math.floor((new Date()-start)/1000);
+  document.getElementById("days").innerText=Math.floor(diff/86400);
+  diff%=86400;
+  document.getElementById("hours").innerText=Math.floor(diff/3600);
+  diff%=3600;
+  document.getElementById("minutes").innerText=Math.floor(diff/60);
+  document.getElementById("seconds").innerText=diff%60;
+ },1000);
+}
+
+// Hearts
+function hearts(){
+ setInterval(()=>{
+  let h=document.createElement("div");
+  h.className="heart";
+  h.innerHTML="❤️";
+  h.style.left=Math.random()*100+"vw";
+  h.style.animationDuration=4+Math.random()*4+"s";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),8000);
+ },400);
+}
+
+// Shooting stars
+function stars(){
+ setInterval(()=>{
+  let s=document.createElement("div");
+  s.className="star";
+  s.style.left=Math.random()*100+"vw";
+  s.style.top=Math.random()*50+"vh";
+  document.body.appendChild(s);
+  setTimeout(()=>s.remove(),2000);
+ },1500);
+} 
+
+/* 🎂 BIRTHDAY COUNTDOWN */
+function birthdayCountdown(){
+  const now = new Date();
+  let year = now.getFullYear();
+  let birthday = new Date(year + "-05-05T00:00:00");
+  if(now > birthday){ birthday = new Date((year + 1) + "-05-05T00:00:00"); }
+  setInterval(()=>{
+    let diff = Math.floor((birthday - new Date()) / 1000);
+    let days = Math.floor(diff / 86400); diff %= 86400;
+    let hours = Math.floor(diff / 3600); diff %= 3600;
+    let minutes = Math.floor(diff / 60);
+    let seconds = diff % 60;
+    document.getElementById("bdayTimer").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+  },1000);
+}
+birthdayCountdown();
+
+/* 💖 LOVE DAYS SYSTEM */
+const loveDays = {
+ "02-07": ["🌹 Rose Day", "Aaj Rose Day hai 🌹\nJaise rose special hota hai, waise hi tum ❤️"],
+ "02-08": ["💍 Propose Day", "Aaj Propose Day 💍\nMain roz tumhe choose karta hoon ❤️"],
+ "02-09": ["🍫 Chocolate Day", "Chocolate sweet hoti hai 🍫\nPar tum usse bhi zyada ❤️"],
+ "02-10": ["🧸 Teddy Day", "Aaj Teddy Day 🧸\nTum mera comfort ho ❤️"],
+ "02-11": ["🤞 Promise Day", "Aaj Promise Day 🤞\nMain kabhi tumhara saath nahi chhodunga ❤️"],
+ "02-12": ["🤗 Hug Day", "Ek tight hug tumhare liye 🤗❤️"],
+ "02-13": ["💋 Kiss Day", "Aaj Kiss Day 💋\nFeelings bina bole samajhne ka din ❤️"],
+ "02-14": ["❤️ Valentine’s Day", "Happy Valentine’s Day ❤️\nTum meri hamesha wali Valentine ho 💖"]
+};
+function checkLoveDay(){
+  const now = new Date();
+  const key = String(now.getMonth()+1).padStart(2,'0') + "-" + String(now.getDate()).padStart(2,'0');
+  if(loveDays[key]){
+    document.getElementById("loveTitle").innerText = loveDays[key][0];
+    document.getElementById("loveMsg").innerText = loveDays[key][1];
+    document.getElementById("lovePopup").style.display="block";
+  }
+}
+function closeLove(){ document.getElementById("lovePopup").style.display="none"; }
+checkLoveDay();
+
+/* 🎉 SPECIAL DAYS EFFECTS */
+function specialEffects(){
+ const d=new Date();
+ const m=d.getMonth()+1;
+ const day=d.getDate();
+ if(m===2 && day===10){ document.getElementById("panda").style.display="block"; }
+ if(m===2 && day===14){ confetti(); }
+ if(m===5 && day===5){ confetti(); }
+}
+function confetti(){
+ setInterval(()=>{
+  let c=document.createElement("div");
+  c.className="confetti";
+  c.innerHTML=["🎉","💖","✨","🎈","❤️"][Math.floor(Math.random()*5)];
+  c.style.left=Math.random()*100+"vw";
+  c.style.animationDuration=3+Math.random()*3+"s";
+  document.body.appendChild(c);
+  setTimeout(()=>c.remove(),6000);
+ },300);
+}
+specialEffects();
+
+/* 📔 REAL DIARY SYSTEM */
+const diaryPageEl = document.getElementById("diaryPage");
+const oldEntriesEl = document.getElementById("oldEntries");
+const todayDateEl = document.getElementById("todayDate");
+const listBtnEl = document.getElementById("listBtn");
+const dateListEl = document.getElementById("dateList");
+let diaryEntriesArr = [];
+let currentIndex = 0;
+
+function openDiary(){
+  let author = prompt("Kaun diary likh raha hai? Tanush / Dimple 💖").trim();
+  if(author !== "Tanush" && author !== "Dimple"){ alert("Sirf Tanush ya Dimple hi likh sakte hain 💌"); return; }
+
+  let p = prompt("Diary password 💖");
+  if(p !== "dimple"){ alert("Wrong password ❌"); return; }
+
+  diaryPageEl.style.display = "flex";
+  setTimeout(()=> diaryPageEl.classList.add("pageOpen"), 50);
+
+  diaryEntriesArr = JSON.parse(localStorage.getItem("diary") || "[]");
+  currentIndex = 0;
+  loadDiary(author);
+}
+
+function saveDiary(){
+  let text = document.getElementById("diaryText").value.trim();
+  if(text === ""){ alert("Kuch toh likho ❤️"); return; }
+
+  let photoInput = document.getElementById("diaryPhoto");
+  let photo = "";
+  if(photoInput.files && photoInput.files[0]){
+    let reader = new FileReader();
+    reader.onload = function(e){ photo = e.target.result; pushDiaryEntry(text, photo); };
+    reader.readAsDataURL(photoInput.files[0]);
+  } else { pushDiaryEntry(text, photo); }
+}
+
+function pushDiaryEntry(text, photo){
+  let d = new Date().toDateString();
+  let author = prompt("Enter Author Again (Tanush/Dimple) 💖") || "Unknown";
+  let diary = JSON.parse(localStorage.getItem("diary") || "[]");
+  diary.unshift({date:d, author, text, photo});
+  localStorage.setItem("diary", JSON.stringify(diary));
+  document.getElementById("diaryText").value = "";
+  document.getElementById("diaryPhoto").value = "";
+  diaryEntriesArr = diary;
+  currentIndex = 0;
+  loadDiary(author);
+}
+
+function loadDiary(author){
+  todayDateEl.innerText = "📅 " + new Date().toDateString();
+  oldEntriesEl.innerHTML = "";
+  dateListEl.innerHTML = "";
+
+  diaryEntriesArr.forEach((entry,i)=>{
+    const div = document.createElement("div");
+    div.className = "diaryEntry";
+    if(i === currentIndex) div.classList.add("active");
+    div.innerHTML = `<b>${entry.date} - ${entry.author}</b><br><br>${entry.text}` + (entry.photo?`<br><img src="${entry.photo}" style="width:100%; margin-top:10px; border-radius:10px;">`:"");
+    oldEntriesEl.appendChild(div);
+
+    // populate list
+    const dBtn = document.createElement("div");
+    dBtn.style.padding="5px";
+    dBtn.style.cursor="pointer";
+    dBtn.style.borderBottom="1px solid #ffb3c1";
+    dBtn.innerText = entry.date + " - " + entry.author;
+    dBtn.onclick = ()=>{ currentIndex=i; updateActiveEntry(); dateListEl.style.display="none"; };
+    dateListEl.appendChild(dBtn);
+  });
+}
+
+function updateActiveEntry(){
+  const entries = document.querySelectorAll(".diaryEntry");
+  entries.forEach(e=>e.classList.remove("active"));
+  if(entries[currentIndex]) entries[currentIndex].classList.add("active");
+}
+
+listBtnEl.onclick = ()=>{ dateListEl.style.display = dateListEl.style.display==="none"?"block":"none"; }
+
+function closeDiary(){
+  diaryPageEl.classList.remove("pageOpen");
+  setTimeout(()=> diaryPageEl.style.display="none",700);
+}
+
+// Swipe support
+let startX = 0;
+oldEntriesEl.ontouchstart = (e)=>{ startX = e.touches[0].clientX; };
+oldEntriesEl.ontouchend = (e)=>{
+  let endX = e.changedTouches[0].clientX;
+  if(endX < startX - 50){ if(currentIndex<diaryEntriesArr.length-1){ currentIndex++; updateActiveEntry(); } }
+  else if(endX > startX + 50){ if(currentIndex>0){ currentIndex--; updateActiveEntry(); } }
+};
+</script>
+
+</body>
+</html>
