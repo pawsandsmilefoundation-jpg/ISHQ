@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>For You 🌸</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Flower Animation CSS -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Flower Animation JS -->
+  <script src="script.js" defer></script>
+
+  <style>
+    /* 💖 Message Overlay */
+    .flower-message{
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: white;
+      font-family: 'Poppins', sans-serif;
+      opacity: 0;
+      animation: showMsg 3s ease forwards;
+      animation-delay: 4.5s;
+      z-index: 999;
+      padding: 20px;
+    }
+
+    .flower-message h1{
+      font-size: 38px;
+      margin-bottom: 10px;
+    }
+
+    .flower-message p{
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    @keyframes showMsg{
+      to{
+        opacity: 1;
+      }
+    }
+
+    /* 🔙 Back Button */
+    .back-btn{
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background: rgba(255,255,255,0.15);
+      color: white;
+      padding: 8px 14px;
+      border-radius: 20px;
+      font-size: 14px;
+      cursor: pointer;
+      z-index: 9999;
+      backdrop-filter: blur(6px);
+    }
+
+    .back-btn:hover{
+      background: rgba(255,255,255,0.3);
+    }
+  </style>
+</head>
+
+<body class="not-loaded">
+
+  <!-- 🔙 Back -->
+  <div class="back-btn" onclick="history.back()">← Back</div>
+
+  <!-- 🌙 Background -->
+  <div class="night"></div>
+
+  <!-- 🌸 FLOWER ANIMATION -->
+  <div class="flowers">
+
+    <!-- FLOWER 1 -->
+    <div class="flower flower--1">
+      <div class="flower__leafs flower__leafs--1">
+        <div class="flower__leaf flower__leaf--1"></div>
+        <div class="flower__leaf flower__leaf--2"></div>
+        <div class="flower__leaf flower__leaf--3"></div>
+        <div class="flower__leaf flower__leaf--4"></div>
+        <div class="flower__white-circle"></div>
+
+        <div class="flower__light flower__light--1"></div>
+        <div class="flower__light flower__light--2"></div>
+        <div class="flower__light flower__light--3"></div>
+        <div class="flower__light flower__light--4"></div>
+        <div class="flower__light flower__light--5"></div>
+        <div class="flower__light flower__light--6"></div>
+        <div class="flower__light flower__light--7"></div>
+        <div class="flower__light flower__light--8"></div>
+      </div>
+
+      <div class="flower__line">
+        <div class="flower__line__leaf flower__line__leaf--1"></div>
+        <div class="flower__line__leaf flower__line__leaf--2"></div>
+        <div class="flower__line__leaf flower__line__leaf--3"></div>
+        <div class="flower__line__leaf flower__line__leaf--4"></div>
+        <div class="flower__line__leaf flower__line__leaf--5"></div>
+        <div class="flower__line__leaf flower__line__leaf--6"></div>
+      </div>
+    </div>
+
+    <!-- FLOWER 2 -->
+    <div class="flower flower--2">
+      <div class="flower__leafs flower__leafs--2">
+        <div class="flower__leaf flower__leaf--1"></div>
+        <div class="flower__leaf flower__leaf--2"></div>
+        <div class="flower__leaf flower__leaf--3"></div>
+        <div class="flower__leaf flower__leaf--4"></div>
+        <div class="flower__white-circle"></div>
+      </div>
+      <div class="flower__line">
+        <div class="flower__line__leaf flower__line__leaf--1"></div>
+        <div class="flower__line__leaf flower__line__leaf--2"></div>
+        <div class="flower__line__leaf flower__line__leaf--3"></div>
+        <div class="flower__line__leaf flower__line__leaf--4"></div>
+      </div>
+    </div>
+
+    <!-- FLOWER 3 -->
+    <div class="flower flower--3">
+      <div class="flower__leafs flower__leafs--3">
+        <div class="flower__leaf flower__leaf--1"></div>
+        <div class="flower__leaf flower__leaf--2"></div>
+        <div class="flower__leaf flower__leaf--3"></div>
+        <div class="flower__leaf flower__leaf--4"></div>
+        <div class="flower__white-circle"></div>
+      </div>
+      <div class="flower__line">
+        <div class="flower__line__leaf flower__line__leaf--1"></div>
+        <div class="flower__line__leaf flower__line__leaf--2"></div>
+        <div class="flower__line__leaf flower__line__leaf--3"></div>
+        <div class="flower__line__leaf flower__line__leaf--4"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 💖 MESSAGE -->
+  <div class="flower-message">
+    <h1>🌸 For You 🌸</h1>
+    <p>
+      Jaise ye phool dheere dheere khilte hain,<br>
+      waise hi tum meri zindagi ko har din<br>
+      aur bhi khoobsurat bana deti ho 💖
+    </p>
+  </div>
+
+</body>
+</html>
