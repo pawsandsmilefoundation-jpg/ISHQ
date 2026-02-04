@@ -119,7 +119,7 @@ button{
 /* HIDDEN MESSAGE */
 #secret{
   display:none;
-  animation:fadeIn 1s ease;
+  animation:fadeIn 2s ease;
 }
 @keyframes fadeIn{
   from{opacity:0; transform:scale(0.8);}
@@ -144,7 +144,7 @@ button{
   width:2px;
   height:80px;
   background:linear-gradient(white,transparent);
-  animation:shoot 2s linear infinite;
+  animation:shoot 4s linear infinite;
   opacity:0.8;
 }
 @keyframes shoot{
@@ -321,7 +321,7 @@ button{
   height: 300px;
   transform-style: preserve-3d;
   transform: perspective(1000px);
-  animation: rotate3d 30s linear infinite;
+  animation: rotate3d 60s linear infinite;
 }
 
 .box3d:hover{
@@ -537,7 +537,7 @@ function hearts(){
   h.className="heart";
   h.innerHTML="❤️";
   h.style.left=Math.random()*100+"vw";
-  h.style.animationDuration=4+Math.random()*4+"s";
+  h.style.animationDuration=6+Math.random()*6+"s";
   document.body.appendChild(h);
   setTimeout(()=>h.remove(),8000);
  },400);
@@ -718,4 +718,5 @@ oldEntriesEl.ontouchend = (e)=>{
 </body>
 
 </html>
+
 
