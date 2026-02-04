@@ -505,7 +505,14 @@ function unlock(){
  }else alert("Sirf Dimple jaanti hai 😉");
 }
 
-
+// Slideshow
+let slide=0;
+function startSlideshow(){
+ let imgs=document.querySelectorAll(".gallery img");
+ imgs[0].style.opacity=1;
+ setInterval(()=>{ imgs.forEach(i=>i.style.opacity=0); slide=(slide+1)%imgs.length; imgs[slide].style.opacity=1; },3000);
+}
+  
 // Hidden message
 function openSecret(){ document.getElementById("secret").style.display="block"; }
 
@@ -711,6 +718,7 @@ oldEntriesEl.ontouchend = (e)=>{
 </body>
 
 </html>
+
 
 
 
