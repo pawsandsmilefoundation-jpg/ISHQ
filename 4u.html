@@ -6,355 +6,80 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-/* 💥 CONFETTI */
-.confetti{
-  position:fixed;
-  top:-10vh;
-  font-size:5vw;
-  animation:fall 4s linear infinite;
-}
-@keyframes fall{
-  to{transform:translateY(120vh) rotate(360deg);}
-}
+*{box-sizing:border-box}
 
 body{
-  margin:0;
-  font-family:'Segoe UI',sans-serif;
-  color:white;
-  background:url('img1.jpeg') repeat;
-  background-size:cover;
-  animation:bgMove 80s linear infinite;
-  overflow-x:hidden;
+ margin:0;
+ font-family:'Segoe UI',sans-serif;
+ color:white;
+ background:url('img1.jpeg') repeat;
+ background-size:cover;
+ animation:bgMove 120s linear infinite;
+ overflow-x:hidden;
 }
+
 @keyframes bgMove{
-  from{background-position:0 0;}
-  to{background-position:-3000px 0;}
+ from{background-position:0 0;}
+ to{background-position:-1500px 0;}
 }
 
-.container{
-  padding:6vw;
-  text-align:center;
-}
+.container{padding:6vw;text-align:center}
 
-/* CARD */
 .card{
-  background:rgba(0,0,0,0.45);
-  backdrop-filter:blur(8px);
-  border-radius:6vw;
-  padding:6vw;
-  margin:10vw auto;
-  max-width:92%;
-  box-shadow:0 0 30px rgba(0,0,0,0.6);
+ background:rgba(0,0,0,0.6);
+ border-radius:6vw;
+ padding:6vw;
+ margin:10vw auto;
+ max-width:95%;
+ box-shadow:0 0 25px rgba(0,0,0,.6);
 }
 
-/* GALLERY */
+/* blur sirf PC pe */
+@media(min-width:769px){
+ .card{backdrop-filter:blur(8px)}
+}
+
 .gallery{
-  position:relative;
-  width:100%;
-  height:60vw;
-  max-height:320px;
-  overflow:hidden;
-  border-radius:5vw;
-  margin-top:4vw;
+ position:relative;
+ width:100%;
+ height:60vw;
+ max-height:300px;
+ overflow:hidden;
+ border-radius:5vw;
 }
 .gallery img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  position:absolute;
-  top:0; left:0;
-  opacity:0;
-  transition:opacity 1.2s ease-in-out;
+ width:100%;
+ height:100%;
+ object-fit:cover;
+ position:absolute;
+ opacity:0;
+ transition:opacity 1.2s ease;
 }
 
-/* COUNTER */
-.counter{
-  margin-top:4vw;
-  font-size:4.5vw;
-}
-.counter span{
-  display:block;
-  font-size:6.5vw;
-  font-weight:bold;
-  color:#ffb3c1;
-}
-
-/* INPUT + BUTTON */
-input{
-  padding:3vw;
-  border-radius:10vw;
-  border:none;
-  width:65%;
-  text-align:center;
-  font-size:4vw;
-}
-button{
-  padding:3vw 6vw;
-  border:none;
-  border-radius:10vw;
-  font-size:4vw;
-  cursor:pointer;
-  background:white;
-  color:#ff4d6d;
-  margin-top:3vw;
-}
-
-/* MUSIC BUTTON */
-#musicBtn{
-  position:fixed;
-  top:4vw;
-  right:4vw;
-  padding:2.5vw 4vw;
-  border-radius:10vw;
-  border:none;
-  z-index:100;
-}
-
-/* PAW */
-.paw{
-  font-size:10vw;
-  cursor:pointer;
-}
-
-/* HIDDEN MESSAGE */
-#secret{
-  display:none;
-  animation:fadeIn 1s ease;
-}
-@keyframes fadeIn{
-  from{opacity:0; transform:scale(0.8);}
-  to{opacity:1; transform:scale(1);}
-}
-
-/* FLOATING HEARTS */
-.heart{
-  position:fixed;
-  bottom:-10vh;
-  font-size:6vw;
-  animation:floatUp linear infinite;
-  opacity:0.7;
-}
-@keyframes floatUp{
-  to{transform:translateY(-120vh);}
-}
-
-/* SHOOTING STARS */
-.star{
-  position:unfixed;
-  width:2px;
-  height:80px;
-  background:linear-gradient(white,transparent);
-  animation:shoot 2s linear infinite;
-  opacity:0.8;
-}
-@keyframes shoot{
-  from{transform:translate(0,0);}
-  to{transform:translate(-400px,400px); opacity:0;}
-}
-
-/* 🎂 BIRTHDAY POPUP */
-#birthdayPopup{
-  position:fixed;
-  bottom:4vw;
-  left:4vw;
-  background:rgba(0,0,0,0.6);
-  backdrop-filter:blur(8px);
-  border-radius:4vw;
-  padding:3vw;
-  width:180px;
-  box-shadow:0 0 15px rgba(255,105,135,0.6);
-  z-index:200;
-  animation:popIn 1s ease;
-  text-align:center;
-}
-
-#birthdayPopup h3{
-  margin:0;
-  font-size:16px;
-  color:#ffb3c1;
-}
-#birthdayPopup p{
-  margin:2px 0 0;
-  font-size:14px;
-}
-#bdayTimer{
-  margin-top:4px;
-  font-size:14px;
-  font-weight:bold;
-  color:#fff;
-}
-
-/* 💖 LOVE DAY POPUP */
-#lovePopup{
-  position:fixed;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  background:rgba(0,0,0,0.75);
-  backdrop-filter:blur(12px);
-  border-radius:6vw;
-  padding:6vw;
-  width:85vw;
-  max-width:320px;
-  text-align:center;
-  z-index:999;
-  box-shadow:0 0 30px rgba(255,105,135,0.7);
-  animation:fadeIn 1s ease;
-}
-#lovePopup h2{
-  margin:0;
-  color:#ffb3c1;
-}
-#lovePopup button{
-  margin-top:4vw;
-}
-
-/* 🐼 PANDA */
-#panda{
-  position:fixed;
-  bottom:-200px;
-  left:50%;
-  transform:translateX(-50%);
-  font-size:40vw;
-  animation:pandaUp 3s ease forwards;
-  z-index:998;
-}
-@keyframes pandaUp{
-  to{bottom:-5vw;}
-}
-
-/* 📔 DIARY ICON */
-#diaryIcon{
-  position:fixed;
-  left:10px;
-  top:50%;
-  transform:translateY(-50%);
-  font-size:50px;
-  cursor:pointer;
-  z-index:999;
-}
-
-/* 📔 DIARY FULL PAGE */
-#diaryPage{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background:rgba(0,0,0,0.8);
-  display:none;
-  justify-content:center;
-  align-items:center;
-  transform-origin:left;
-  transform:rotateY(90deg);
-  transition:transform 0.8s ease;
-  z-index:9999;
-}
-
-#diaryPage.pageOpen{
-  transform:rotateY(0deg);
-}
-
-.diaryBox{
-  background:white;
-  color:black;
-  width:90%;
-  max-width:420px;
-  border-radius:20px;
-  padding:15px;
-}
-
-.diaryBox textarea{
-  width:100%;
-  height:120px;
-  padding:10px;
-  border-radius:10px;
-  font-size:15px;
-}
-
-.diaryEntry{
-  background:#fff;
-  color:#000;
-  padding:4vw;
-  border-radius:3vw;
-  margin-bottom:4vw;
-  box-shadow:0 10px 25px rgba(0,0,0,.4);
-  animation:pageFlip .6s ease;
-  display:none;
-}
-.diaryEntry.active{
-  display:block;
-}
-@keyframes pageFlip{
-  from{transform:rotateY(-90deg);opacity:0;}
-  to{transform:rotateY(0);opacity:1;}
-}
-
-#oldEntries{
-  max-height:200px;
-  overflow-y:auto;
-}
-
-/* LIST BUTTON */
-#listBtn{
-  margin-top:5px;
-  padding:5px 10px;
-  background:#ffb3c1;
-  border:none;
-  border-radius:8px;
-  cursor:pointer;
-}
-#dateList div:hover{
-  background:#ffe4f0;
-}
-/* 🔥 3D IMAGE GALLERY */
-.gallery3d-wrapper{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  margin-top:6vw;
-}
-
+/* 3D gallery slow on phone */
 .box3d{
-  position: relative;
-  width: 220px;
-  height: 300px;
-  transform-style: preserve-3d;
-  transform: perspective(1000px);
-  animation: rotate3d 30s linear infinite;
+ width:200px;
+ height:280px;
+ transform-style:preserve-3d;
+ animation:rotate3d 60s linear infinite;
 }
 
-.box3d:hover{
-  animation-play-state: paused;
+@media(max-width:768px){
+ .box3d{animation-duration:90s}
+ .confetti,.star{display:none}
 }
 
-@keyframes rotate3d {
-  0%{
-    transform: perspective(1000px) rotateY(0deg);
-  }
-  100%{
-    transform: perspective(1000px) rotateY(360deg);
-  }
+@keyframes rotate3d{
+ from{transform:perspective(1000px) rotateY(0deg);}
+ to{transform:perspective(1000px) rotateY(360deg);}
 }
 
-.box3d span{
-  position:absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  transform-style:preserve-3d;
-  transform: rotateY(calc(var(--i) * 36deg)) translateZ(300px);
+.heart,.confetti,.star{
+ position:fixed;
+ will-change:transform;
 }
-
-.box3d span img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  border-radius:15px;
-  box-shadow:0 15px 30px rgba(0,0,0,0.6);
-}  
 </style>
+
 </head>
 
 <body>
@@ -486,6 +211,7 @@ toh yaad rakhna — main abhi bhi wahi hoon jb hum mile the aur mene pucha tha r
 <div class="heart-flower-btn" onclick="openFlowerScreen()">🌸</div>
 
 <script>
+  const isMobile = window.innerWidth < 768;
 let music=document.getElementById("bgm");
 function toggleMusic(){music.paused?music.play():music.pause();}
 
@@ -529,19 +255,27 @@ function startCounter(){
 
 // Hearts
 function hearts(){
- setInterval(()=>{
+ let count=0;
+ let max=isMobile?20:80;
+ let speed=isMobile?700:400;
+
+ let i=setInterval(()=>{
+  if(count>=max){clearInterval(i);return;}
+  count++;
   let h=document.createElement("div");
   h.className="heart";
   h.innerHTML="❤️";
   h.style.left=Math.random()*100+"vw";
-  h.style.animationDuration=4+Math.random()*4+"s";
+  h.style.animationDuration=(isMobile?6:4)+"s";
   document.body.appendChild(h);
   setTimeout(()=>h.remove(),8000);
- },400);
+ },speed);
 }
+
 
 // Shooting stars
 function stars(){
+ if(isMobile) return;
  setInterval(()=>{
   let s=document.createElement("div");
   s.className="star";
@@ -550,7 +284,8 @@ function stars(){
   document.body.appendChild(s);
   setTimeout(()=>s.remove(),2000);
  },1500);
-} 
+}
+
 
 /* 🎂 BIRTHDAY COUNTDOWN */
 function birthdayCountdown(){
@@ -602,16 +337,21 @@ function specialEffects(){
  if(m===5 && day===5){ confetti(); }
 }
 function confetti(){
- setInterval(()=>{
-  let c=document.createElement("div");
-  c.className="confetti";
-  c.innerHTML=["🎉","💖","✨","🎈","❤️"][Math.floor(Math.random()*5)];
-  c.style.left=Math.random()*100+"vw";
-  c.style.animationDuration=3+Math.random()*3+"s";
-  document.body.appendChild(c);
-  setTimeout(()=>c.remove(),6000);
- },300);
+ let c=0;
+ let max=isMobile?30:120;
+ let i=setInterval(()=>{
+  if(c>=max){clearInterval(i);return;}
+  c++;
+  let e=document.createElement("div");
+  e.className="confetti";
+  e.innerHTML=["🎉","💖","✨","🎈","❤️"][Math.floor(Math.random()*5)];
+  e.style.left=Math.random()*100+"vw";
+  e.style.animationDuration=(isMobile?5:3)+"s";
+  document.body.appendChild(e);
+  setTimeout(()=>e.remove(),6000);
+ },isMobile?600:300);
 }
+
 specialEffects();
 
 /* 📔 REAL DIARY SYSTEM */
