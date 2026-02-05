@@ -319,18 +319,35 @@ button{
   margin-top:4vw;
 }
 
+/* 📱 ULTRA SMOOTH SWIPE GALLERY */
+.swipe-gallery{
+  position:relative;
+  width:100%;
+  height:60vw;
+  max-height:320px;
+  overflow:hidden;
+  border-radius:5vw;
+  touch-action: pan-y;
+}
+
 .swipe-gallery img{
   position:absolute;
+  inset:0;
   width:100%;
   height:100%;
   object-fit:cover;
-  left:100%;
-  top:0;
-  transition:left .35s ease;
+  transform:translateX(100%);
+  transition:transform .35s ease;
+  will-change: transform;
 }
 
-.swipe-gallery img.active{ left:0; }
-.swipe-gallery img.prev{ left:-100%; }
+.swipe-gallery img.active{
+  transform:translateX(0);
+}
+
+.swipe-gallery img.prev{
+  transform:translateX(-100%);
+}
   
 </style>
 </head/>
@@ -691,20 +708,40 @@ oldEntriesEl.ontouchend = (e)=>{
 };
 
 /* 📱 SWIPE GALLERY LOGIC */
+/* 📱 SMOOTH SWIPE GALLERY */
 let swipeIndex = 0;
-let swipeStartX = 0;
+let startX = 0;
+let isSwiping = false;
+
 const swipeGallery = document.getElementById("swipeGallery");
-
 if(swipeGallery){
-  const swipeImgs = swipeGallery.querySelectorAll("img");
+  const imgs = swipeGallery.querySelectorAll("img");
 
-  function showSwipe(i){
-    swipeImgs.forEach((img,idx)=>{
+  function updateSwipe(){
+    imgs.forEach((img,i)=>{
       img.classList.remove("active","prev");
-      if(idx === i) img.classList.add("active");
-      if(idx === i-1) img.classList.add("prev");
+      if(i === swipeIndex) img.classList.add("active");
+      if(i === swipeIndex-1) img.classList.add("prev");
     });
   }
+  updateSwipe();
+
+  swipeGallery.addEventListener("touchstart",e=>{
+    startX = e.touches[0].clientX;
+    isSwiping = true;
+  },{passive:true});
+
+  swipeGallery.addEventListener("touchend",e=>{
+    if(!isSwiping) return;
+    let diff = e.changedTouches[0].clientX - startX;
+
+    if(diff < -40 && swipeIndex < imgs.length-1) swipeIndex++;
+    else if(diff > 40 && swipeIndex > 0) swipeIndex--;
+
+    updateSwipe();
+    isSwiping = false;
+  });
+    }
 
   swipeGallery.addEventListener("touchstart",e=>{
     swipeStartX = e.touches[0].clientX;
@@ -722,6 +759,7 @@ if(swipeGallery){
 </body>
 
 </html>
+
 
 
 
