@@ -312,15 +312,14 @@ class FashionGallery {
     };
     animate();
   }
-  initImageData() {
-    // Fashion portrait images
-    this.fashionImages = [];
-    for (let i = 1; i <= 14; i++) {
-      const paddedNumber = String(i).padStart(2, "0");
-      this.fashionImages.push(
-        `https://assets.codepen.io/7558/orange-portrait_${paddedNumber}.jpg`
-      );
-    }
+ this.fashionImages = [
+  "images/img1.jpeg",
+  "images/img2.jpeg",
+  "images/img3.jpeg",
+  "images/img4.jpeg",
+  "images/img5.jpeg"
+];
+
     // Image data for titles and descriptions
     this.imageData = [
       {
